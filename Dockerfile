@@ -8,4 +8,4 @@ COPY . /app
 
 CMD npm run serve
 
-EXPOSE 3000
+EXPOSE 8080
