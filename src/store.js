@@ -100,16 +100,21 @@ const actions = {
 const getters = {
   // a list of issues and their # of occurrences
   getListOfIssues: state => _.countBy(state.results, 'code'),
+
   // # of unique issues in list above
   uniqueIssues: (state, getters) => _.size(getters.getListOfIssues),
+
   // full count of warnings, notices, errors for filter stats.
   getStats: state => _.countBy(state.results, 'type'),
+
   // helper function to filter the result list based on issue visibility.
   getActiveIssues: (state, key, type) =>
     state.results.filter(result =>
       state.issueList.some(issue =>
         result.site === key && result.type === type && result.code === issue.name && issue.show
     )),
+
+  // reactive list of sites checked that update issue # based on filters.
   getSiteList: state =>
     Object.keys(state.data.results)
       .map(key => ({
@@ -118,6 +123,7 @@ const getters = {
         notice: getters.getActiveIssues(state, key, 'notice').length,
         error: getters.getActiveIssues(state, key, 'error').length,
       })),
+
   // get the full results for a site based on activeResult selection.
   getActiveResults: state => {
     if (state.activeResult) {

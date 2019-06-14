@@ -4,7 +4,7 @@
       <h3><a :href="result.name" target="_blank">{{ result.name }}</a></h3>
     </div>
     <table
-      v-if="getActiveResults"
+      v-if="getActiveResults.length > 0"
       class="table table-striped table-hover table-bordered"
     >
       <thead>
