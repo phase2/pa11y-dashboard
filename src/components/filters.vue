@@ -70,7 +70,7 @@
       showIssues() {
         this.showAll = !this.showAll;
 
-        if (this.showAll === true) {
+        if (this.showAll) {
           this.issueList.forEach(issue => {
             issue.show = true;
           });
